@@ -1,0 +1,85 @@
+@media screen and (max-width: 1362px) {
+    main {
+        gap: 32px;
+        padding: 30px 20px;
+        width: 100%;
+
+        .main-right {
+            width: 40%;
+        }
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    main {
+        flex-direction: column;
+        width: 80%;
+
+        .main-right, .box {
+            width: 100%;
+            min-width: auto !important;
+        }
+    }
+}
+
+@media screen and (max-width: 899px) {
+
+}
+
+@media screen and (max-width: 767px) {
+    main {
+        width: 100%;
+
+        .two-left-one-right-schema.plan-schema .price-module {
+
+            span {
+                font-size: 26px !important;
+                line-height: 26px !important;
+                min-height: 26px !important;
+            }
+
+            p {
+                font-size: 16px !important;
+            }
+        }
+
+        .box.main-left {
+            padding: 36px 26px;
+        }
+    }
+}
+
+@media screen and (max-width: 599px) {
+    main {
+
+        .main-right {
+            gap: 36px;
+        }
+
+        .box .two-left-one-right-schema.plan-schema {
+            padding: 28px 16px;
+            flex-direction: column;
+            gap: 20px;
+
+            .schema-left {
+                gap: 16px;
+
+                .plan-icon {
+                    min-width: 48px;
+                    min-height: 48px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 479px) {
+    .main-right .set-pricing .hourly-fixed {
+        flex-direction: column !important;
+        gap: 16px !important;
+
+        .pickable {
+            width: 100%;
+        }
+    }
+}

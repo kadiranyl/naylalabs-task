@@ -30,22 +30,33 @@
     main {
         width: 100%;
 
-        .two-left-one-right-schema.plan-schema .price-module {
+        .two-left-one-right-schema.plan-schema {
 
-            span {
-                font-size: 26px !important;
-                line-height: 26px !important;
-                min-height: 26px !important;
+            .schema-left .flex-col .text-btn {
+                font-size: 12px;
             }
 
-            p {
-                font-size: 16px !important;
+            .price-module {
+                span {
+                    font-size: 26px !important;
+                    line-height: 26px !important;
+                    min-height: 26px !important;
+                }
+    
+                p {
+                    font-size: 16px !important;
+                }
             }
+
         }
 
         .box.main-left {
             padding: 36px 26px;
         }
+    }
+
+    .pop-up .pop-up-box {
+        padding: 32px 32px 36px;
     }
 }
 

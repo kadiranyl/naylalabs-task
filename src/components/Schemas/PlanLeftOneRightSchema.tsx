@@ -1,10 +1,10 @@
 import PriceModule from "../PriceModule";
 import TextBtn from "../TextBtn";
 
-export default function PlanLeftOneRightSchema({planIcon, planName, price, setValue, defaultChecked=false}: any) {
+export default function PlanLeftOneRightSchema({planIcon, planName, price, setValue}: any) {
   return (
     <div className="two-left-one-right-schema plan-schema">
-      <input className="hidden-input" type="radio" name="plan-type" defaultChecked={defaultChecked} onChange={(e) => e.target.value === "on" && setValue(planName)} required />
+      <input className="hidden-input" type="radio" name="plan-type" onChange={() => setValue(planName)} />
       <div className="schema-left">
         <div className="plan-icon">
           {planIcon}

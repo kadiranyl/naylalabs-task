@@ -34,6 +34,10 @@ li {
   list-style: none;
 }
 
+h2 {
+  font-size: 1.6em;
+}
+
 button {
   cursor: pointer;
 }
@@ -188,7 +192,7 @@ input{
 
 .small-btn {
   background: $primary;
-  padding: 12px 24px;
+  padding: 11px 24px;
   border-radius: 24px;
   color: $page-bg;
   font-weight: 600;
@@ -340,6 +344,10 @@ main {
 
       
     }
+    
+    > .text-btn {
+      padding: 0 12px;
+    }
 
     .two-left-one-right-schema:has(.hidden-input:checked) {
 
@@ -390,8 +398,12 @@ main {
           }
         }
 
-        .flex-col span.name {
-          font-size: 18px;
+        .flex-col {
+          gap: 6px;
+
+          span.name {
+            font-size: 18px;
+          }
         }
       }
 
@@ -559,6 +571,57 @@ main {
           font-weight: 600;
         }
       }
+    }
+  }
+}
+
+
+.pop-up {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba($color: #000000, $alpha: .2);
+  z-index: 9999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+
+  .pop-up-close {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .pop-up-box {
+    background: #fff;
+    border-radius: 14px;
+    padding: 46px 68px 52px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    z-index: 100;
+    text-align: center;
+
+    img {
+      position: relative !important;
+      width: 220px !important;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      align-items: center;
+    }
+
+    .small-btn {
+      margin-top: 26px;
     }
   }
 }

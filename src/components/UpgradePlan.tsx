@@ -6,6 +6,7 @@ import TwoLeftOneRightSchema from 'components/Schemas/TwoLeftOneRightSchema'
 import { useState } from 'react'
 import TextBtn from './TextBtn'
 import { sendPayment } from 'services/PaymentService'
+import OrderSuccessful from './Popups/OrderSuccessful'
 
 export default function UpgradePlan() {
   
@@ -13,13 +14,12 @@ export default function UpgradePlan() {
     {
       planIcon: <GiPlanetConquest size={34} />,
       planName: "Small Business",
-      price: 8350,
-      defaultChecked: true
+      price: 8350
     },
     {
       planIcon: <TbPlanet size={32} />,
       planName: "Big Business",
-      price: 12650,
+      price: 12650
     }
   ]
 
@@ -42,6 +42,7 @@ export default function UpgradePlan() {
     }
   ]
 
+  const [showPopup, setShowPopup] = useState<Boolean>(false)
   const [plan, setPlan] = useState<String>("")
   const [payment, setPayment] = useState<any>({
     cardNumber: String,
@@ -49,27 +50,36 @@ export default function UpgradePlan() {
   })
   const [email, setEmail] = useState("")
 
+  console.log(plan);
+  
+
   return (
-    <form className="box main-left" onSubmit={(e) => sendPayment(e, plan, payment, email, setPlan, setPayment, setEmail )}>
+    <>
+    <form id="send-payment-form" className="box main-left" onSubmit={(e) => sendPayment(e, plan, payment, email, setPlan, setPayment, setEmail, setShowPopup )}>
         <h2>Upgrade your plan</h2>
         <p>Please make the payment to start enjoying all the features of our premium plan as soon as possible.</p>
 
         {plans.map((plan, index) => (
-        <PlanLeftOneRightSchema key={index} planIcon={plan.planIcon} planName={plan.planName} price={plan.price} setValue={setPlan} defaultChecked={plan.defaultChecked} />
+        <PlanLeftOneRightSchema key={index} planIcon={plan.planIcon} planName={plan.planName} price={plan.price} setValue={setPlan} />
         ))}
 
         <h3 className='box-mt-high'>Payment details</h3>
         {payments.map((item, index) => (
           <TwoLeftOneRightSchema key={index} imageInfo={item.imageInfo} cardName={item.cardName} cardNumber={item.cardNumber} value={payment} setValue={setPayment} />
         ))}
-        <TextBtn text="Add Payment Method" mt={true} />
+        <TextBtn text="Add Payment Method" />
 
-        <input type="email" name="email" placeholder='Email address' className='email-input box-mt-high' value={email} onChange={(e) => setEmail(e.target.value)} required />
+        <input type="email" name="email" placeholder='Email address' className='email-input box-mt-high' value={email} onChange={(e) => setEmail(e.target.value)} />
 
         <button type='submit' className="btn big-btn box-mt">
         Proceed to payment
         <BsArrowRight size={20} />
         </button>
     </form>
+
+    {showPopup && (
+      <OrderSuccessful setShowPopup={setShowPopup} />
+    )}
+    </>
   )
 }

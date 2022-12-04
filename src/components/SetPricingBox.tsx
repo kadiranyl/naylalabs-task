@@ -16,7 +16,7 @@ export default function SetPricingBox() {
 
         <div className="flex-row hourly-fixed">
             <div className="pickable">
-              <input className="hidden-input" type="radio" name="pricing-type" />
+              <input className="hidden-input" type="radio" name="pricing-type" defaultChecked />
               <BiTime size={36} />
               <span>Hourly</span>
             </div>

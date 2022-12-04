@@ -309,6 +309,10 @@ main {
 
       &:hover {
         background: $primary-soft;
+
+        .schema-right input {
+          outline-color: $gray;
+        }
       }
 
       .bank {

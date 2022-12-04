@@ -6,7 +6,7 @@ export default function PriceModule({price, type, canEdit=false, setPrice}: any)
   const [animationStartPrice, setAnimationStartPrice] = useState<any>(0)
   
   const setPriceHandler = (e: any) => {
-    if (Number(e) <= 300 && Number(e) >= 0) {
+    if (e <= 300 && e >= 0) {
       setPrice(e)
     }
   }

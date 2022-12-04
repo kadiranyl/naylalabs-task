@@ -1,8 +1,9 @@
 import Image from "next/image";
 
-export default function TwoLeftOneRightSchema({imageInfo, cardName, cardNumber}: any) {
+export default function TwoLeftOneRightSchema({imageInfo, cardName, cardNumber, value, setValue, cvc, setCvc}: any) {
   return (
     <div className="two-left-one-right-schema box-mt">
+      <input type="radio" name="payment-type" value={cardName} onChange={(e) => setValue(e.target.value)} checked={value === cardName} className="hidden-input" required />
       <div className="schema-left">
         <div className="bank">
           <Image src={imageInfo.src} fill alt={imageInfo.alt} />
@@ -13,7 +14,7 @@ export default function TwoLeftOneRightSchema({imageInfo, cardName, cardNumber}:
         </div>
       </div>
       <div className="schema-right">
-        <input type="text" name="cvc" placeholder='CVC' accept={`[0-9]*`} maxLength={3} />
+        <input type="text" name="cvc" placeholder='CVC' accept={`[0-9]*`} maxLength={3} onClick={() => setValue(cardName)} value={cvc} onChange={(e) => setCvc(e.target.value)} />
       </div>
     </div>
   )

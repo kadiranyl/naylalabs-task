@@ -169,6 +169,8 @@ input{
     font-size: 32px;
     line-height: 32px;
     min-height: 32px;
+    overflow-wrap: break-word;
+    word-break: break-all;
   }
 
   p {
@@ -221,6 +223,18 @@ main {
     }
 
     .two-left-one-right-schema {
+      position: relative;
+
+      .hidden-input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0;
+        z-index: 10;
+        cursor: pointer;
+      }
 
       .bank {
         background: $primary-soft;
@@ -238,14 +252,36 @@ main {
         }
       }
 
-      .schema-right input {
-        width: 60px;
-        padding: 9px 12px;
-        font-weight: 600;
-        text-align: center;
+      .schema-right {
+        z-index: 99;
+
+        input { 
+          width: 60px;
+          padding: 9px 12px;
+          font-weight: 600;
+          text-align: center;
+        }
       }
 
       
+    }
+
+    .two-left-one-right-schema:has(.hidden-input:checked) {
+
+      .schema-left .flex-col {
+
+        span.name {
+          color: $primary;
+        }
+      }
+
+      .bank {
+        outline: 2px solid $primary;
+      }
+
+      .schema-right input {
+        outline: 2px solid $primary;
+      }
     }
 
     .two-left-one-right-schema.plan-schema {
@@ -281,6 +317,9 @@ main {
         }
       }
 
+      .schema-right {
+        z-index: inherit;
+      }
 
       .price-module {
         span {
@@ -292,8 +331,9 @@ main {
         }
       }
     }
+    
 
-    .two-left-one-right-schema.plan-schema.active {
+    .two-left-one-right-schema.plan-schema:has(.hidden-input:checked) {
       outline: 2px solid $primary;
       background: $primary-soft;
     }

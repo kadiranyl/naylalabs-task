@@ -1,5 +1,4 @@
 import Image from "next/image";
-import CountUp from 'react-countup';
 import CountUpModule from "./CountUp";
 
 export default function ProfileBox() {

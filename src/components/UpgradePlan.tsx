@@ -51,10 +51,7 @@ export default function UpgradePlan() {
     cvc: null
   })
   const [email, setEmail] = useState("")
-  const [resetCvc, setResetCvc] = useState<Boolean>(false)
-
-  console.log(plan);
-  
+  const [resetCvc, setResetCvc] = useState<Boolean>(false)  
 
   return (
     <>

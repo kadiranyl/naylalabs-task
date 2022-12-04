@@ -1,37 +1,31 @@
 import { toast } from "react-toastify";
 
-  export const toastSuccess = (msg: String) => {
-    toast.success(msg, {
+  const toastSettings = (msg: String) => {
+    return {
       position: "top-right",
-      autoClose: msg?.length*50,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-    });
+      autoClose: msg?.length*50,
+    }
+  }
+
+  export const toastSuccess = (msg: String) => {
+    const options: any = toastSettings(msg)
+    
+    toast.success(msg, options);
   }
 
   export const toastError = (msg: String) => {
-    toast.error(msg, {
-      position: "top-right",
-      autoClose: msg?.length*50,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+    const options: any = toastSettings(msg)
+    
+    toast.error(msg, options);
   }
 
   export const toastInfo = (msg: String) => {
-    toast.info(msg, {
-      position: "top-right",
-      autoClose: msg?.length*50,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+    const options: any = toastSettings(msg)
+
+    toast.info(msg, options);
   }

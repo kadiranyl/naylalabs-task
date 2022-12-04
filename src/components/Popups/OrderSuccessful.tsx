@@ -1,11 +1,13 @@
+import { animations } from "lib/Animations";
 import Image from "next/image";
+import Radium from 'radium';
 
 export default function OrderSuccessful({setShowPopup}: any) {
   return (
-    <div className="pop-up">
+    <Radium.StyleRoot className="pop-up">
         <div className="pop-up-close" onClick={() => setShowPopup(false)}></div>
-        <div className="pop-up-box">
-            <Image src="/successful.png" alt="" layout="fill" />
+        <div className="pop-up-box" style={animations.fadeInDown}>
+            <Image src="/successful.png" alt="Successful" layout="fill" />
 
             <div className="content">
                 <h2>Order successfully complate!</h2>
@@ -14,6 +16,6 @@ export default function OrderSuccessful({setShowPopup}: any) {
 
             <button type='button' className="btn small-btn" onClick={() => setShowPopup(false)}>Explore new offers</button>
         </div>
-    </div>
+    </Radium.StyleRoot>
   )
 }

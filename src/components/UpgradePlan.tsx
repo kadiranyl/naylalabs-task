@@ -8,6 +8,8 @@ import TextBtn from './TextBtn'
 import { sendPayment } from 'services/PaymentService'
 import OrderSuccessful from './Popups/OrderSuccessful'
 import OrderUnSuccessful from './Popups/OrderUnSuccessful'
+import Radium from 'radium';
+import { animations } from 'lib/Animations'
 
 export default function UpgradePlan() {
   
@@ -55,7 +57,8 @@ export default function UpgradePlan() {
 
   return (
     <>
-    <form id="send-payment-form" className="box main-left" onSubmit={(e) => sendPayment(e, plan, payment, email, setPlan, setPayment, setEmail, setShowSuccessfulPopup, setShowUnsuccessfulPopup, setResetCvc )}>
+    <Radium.StyleRoot>
+    <form style={animations.fadeInDown} id="send-payment-form" className="box main-left" onSubmit={(e) => sendPayment(e, plan, payment, email, setPlan, setPayment, setEmail, setShowSuccessfulPopup, setShowUnsuccessfulPopup, setResetCvc )}>
         <h2>Upgrade your plan</h2>
         <p>Please make the payment to start enjoying all the features of our premium plan as soon as possible.</p>
 
@@ -76,6 +79,7 @@ export default function UpgradePlan() {
         <BsArrowRight size={20} />
         </button>
     </form>
+    </Radium.StyleRoot>
 
     {showSuccessfulPopup && (
       <OrderSuccessful setShowPopup={setShowSuccessfulPopup} />

@@ -374,7 +374,8 @@ main {
       margin-top: 8px;
 
       &:hover {
-        outline: 2px solid $primary !important;
+        outline: 2px solid $primary;
+        background: none;
       }
 
       &:first-of-type {
@@ -418,14 +419,19 @@ main {
         }
         p {
           font-size: 18px;
+          transition: all $transition;
         }
       }
     }
     
 
     .two-left-one-right-schema.plan-schema:has(.hidden-input:checked) {
-      outline: 2px solid $primary;
-      background: $primary-soft;
+      outline: 2px solid $primary !important;
+      background: $primary-soft !important;
+      
+      .schema-right.price-module p {
+        color: $black;
+      }
     }
 
     .email-input {
@@ -607,6 +613,7 @@ main {
     gap: 14px;
     z-index: 100;
     text-align: center;
+    position: relative;
 
     img {
       position: relative !important;

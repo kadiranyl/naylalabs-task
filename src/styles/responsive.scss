@@ -32,6 +32,10 @@
 
         .two-left-one-right-schema.plan-schema {
 
+            &:hover {
+                outline: none !important;
+            }
+
             .schema-left .flex-col .text-btn {
                 font-size: 12px;
             }
@@ -53,6 +57,8 @@
         .box.main-left {
             padding: 36px 26px;
         }
+
+
     }
 
     .pop-up .pop-up-box {

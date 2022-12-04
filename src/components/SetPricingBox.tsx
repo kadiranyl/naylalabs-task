@@ -3,6 +3,8 @@ import { BsReceipt } from 'react-icons/bs'
 import ReactSlider from "react-slider";
 import PriceModule from 'components/PriceModule'
 import { useState } from 'react';
+import Radium from 'radium';
+import { animations } from 'lib/Animations'
 
 export default function SetPricingBox() {
   const [price, setPrice] = useState<any>(180)
@@ -10,7 +12,7 @@ export default function SetPricingBox() {
   const maxPrice: any = 300
 
   return (
-    <div className="box set-pricing">
+    <Radium.StyleRoot className="box set-pricing" style={animations.fadeInUp}>
         <h2>Set up your pricing</h2>
         <p>Please set up your hourly or fixed rate so that the client is aware of your pricing.</p>
 
@@ -44,6 +46,6 @@ export default function SetPricingBox() {
             <p>${maxPrice}</p>
         </div>
 
-    </div>
+    </Radium.StyleRoot>
   )
 }

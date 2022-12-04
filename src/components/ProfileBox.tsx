@@ -1,9 +1,11 @@
+import { animations } from "lib/Animations";
 import Image from "next/image";
 import CountUpModule from "./CountUp";
+import Radium from 'radium';
 
 export default function ProfileBox() {
   return (
-    <div className="box profile-box">
+    <Radium.StyleRoot className="box profile-box" style={animations.fadeInDown}>
         <Image src="/banner.jpeg" fill alt="Banner" className='banner' objectFit='cover' />
         <div className="profile-photo">
             <Image src="/user.png" fill alt="Banner" objectFit='cover' />
@@ -28,6 +30,6 @@ export default function ProfileBox() {
             <CountUpModule number={129} className="value" />
             </div>
         </div>
-    </div>
+    </Radium.StyleRoot>
   )
 }

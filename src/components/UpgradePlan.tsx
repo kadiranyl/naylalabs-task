@@ -70,7 +70,7 @@ export default function UpgradePlan() {
         {payments.map((item, index) => (
           <TwoLeftOneRightSchema key={index} imageInfo={item.imageInfo} cardName={item.cardName} cardNumber={item.cardNumber} value={payment} setValue={setPayment} resetCvc={resetCvc} setResetCvc={setResetCvc} />
         ))}
-        <TextBtn text="Add Payment Method" />
+        <TextBtn text="Add Payment Method" mt={true} />
 
         <input type="email" name="email" placeholder='Email address' className='email-input box-mt-high' value={email} onChange={(e) => setEmail(e.target.value)} />
 

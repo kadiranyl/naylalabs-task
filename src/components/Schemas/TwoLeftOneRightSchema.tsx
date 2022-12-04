@@ -24,7 +24,7 @@ export default function TwoLeftOneRightSchema({imageInfo, cardName, cardNumber, 
   }, [value.cardNumber])
 
   return (
-    <div className="two-left-one-right-schema">
+    <div className="two-left-one-right-schema payment-method">
       <input type="radio" name="payment-type" value={cardNumber} onChange={(e) => setValue({cardNumber: e.target.value, cvc: value.cvc})} checked={value.cardNumber === cardNumber} className="hidden-input" />
       <div className="schema-left">
         <div className="bank">

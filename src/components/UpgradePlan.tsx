@@ -46,16 +46,15 @@ export default function UpgradePlan() {
   const [plan, setPlan] = useState<String>("")
   const [payment, setPayment] = useState<any>({
     cardNumber: String,
-    cvc: Number
+    cvc: null
   })
   const [email, setEmail] = useState("")
-
-  console.log(plan);
+  const [resetCvc, setResetCvc] = useState<Boolean>(false)
   
 
   return (
     <>
-    <form id="send-payment-form" className="box main-left" onSubmit={(e) => sendPayment(e, plan, payment, email, setPlan, setPayment, setEmail, setShowPopup )}>
+    <form id="send-payment-form" className="box main-left" onSubmit={(e) => sendPayment(e, plan, payment, email, setPlan, setPayment, setEmail, setShowPopup, setResetCvc )}>
         <h2>Upgrade your plan</h2>
         <p>Please make the payment to start enjoying all the features of our premium plan as soon as possible.</p>
 
@@ -65,7 +64,7 @@ export default function UpgradePlan() {
 
         <h3 className='box-mt-high'>Payment details</h3>
         {payments.map((item, index) => (
-          <TwoLeftOneRightSchema key={index} imageInfo={item.imageInfo} cardName={item.cardName} cardNumber={item.cardNumber} value={payment} setValue={setPayment} />
+          <TwoLeftOneRightSchema key={index} imageInfo={item.imageInfo} cardName={item.cardName} cardNumber={item.cardNumber} value={payment} setValue={setPayment} resetCvc={resetCvc} setResetCvc={setResetCvc} />
         ))}
         <TextBtn text="Add Payment Method" />
 

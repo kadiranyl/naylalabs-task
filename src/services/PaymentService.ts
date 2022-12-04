@@ -1,20 +1,21 @@
 import axios from 'axios'
 import { toastError, toastSuccess } from 'lib/Toastify';
 
-export const sendPayment = async (e: any, plan: String, payment: Payment, email: String, setPlan: Function, setPayment: Function, setEmail: Function, setShowPopup: Function) => {
+export const sendPayment = async (e: any, plan: String, payment: Payment, email: String, setPlan: Function, setPayment: Function, setEmail: Function, setShowPopup: Function, setResetCvc: Function) => {
     e.preventDefault()   
     
     console.log(plan);
     
 
-    if (plan && payment.cardNumber && payment.cvc && email) {
+    if (plan && payment.cardNumber && payment.cvc && email && payment.cvc >= 100) {
         setShowPopup(true)
         setPlan()
         setPayment({
             cardNumber: "",
-            cvc: null
+            cvc: NaN
         })
         setEmail()
+        setResetCvc(true)
 
         const form: any = document.getElementById("send-payment-form")
 
@@ -23,7 +24,7 @@ export const sendPayment = async (e: any, plan: String, payment: Payment, email:
         toastError("Please pick a plan!")
     } else if (!payment.cardNumber) {
         toastError("Please pick a payment method!")
-    } else if (!payment.cvc) {
+    } else if (!payment.cvc || payment.cvc <= 100) {
         toastError("Please write your CVC!")
     } else if (!email) {
         toastError("Please enter your e-mail!")

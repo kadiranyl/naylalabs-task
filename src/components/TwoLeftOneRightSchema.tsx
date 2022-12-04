@@ -1,9 +1,22 @@
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
-export default function TwoLeftOneRightSchema({imageInfo, cardName, cardNumber, value, setValue, cvc, setCvc}: any) {
+export default function TwoLeftOneRightSchema({imageInfo, cardName, cardNumber, value, setValue}: any) {
+  const [cvc, setCvc] = useState<any>()
+
+  useEffect(() => {
+    setValue({cardNumber, cvc: Number(cvc)})
+  }, [cvc])
+
+  const cvcHandler = (e: any) => {
+    if (e <= 999) {
+      setCvc(e)
+    }
+  }
+  
   return (
-    <div className="two-left-one-right-schema box-mt">
-      <input type="radio" name="payment-type" value={cardName} onChange={(e) => setValue(e.target.value)} checked={value === cardName} className="hidden-input" required />
+    <div className="two-left-one-right-schema">
+      <input type="radio" name="payment-type" value={cardNumber} onChange={(e) => setValue({cardNumber, cvc})} checked={value.cardNumber === cardNumber} className="hidden-input" required />
       <div className="schema-left">
         <div className="bank">
           <Image src={imageInfo.src} fill alt={imageInfo.alt} />
@@ -14,7 +27,7 @@ export default function TwoLeftOneRightSchema({imageInfo, cardName, cardNumber, 
         </div>
       </div>
       <div className="schema-right">
-        <input type="text" name="cvc" placeholder='CVC' accept={`[0-9]*`} maxLength={3} onClick={() => setValue(cardName)} value={cvc} onChange={(e) => setCvc(e.target.value)} />
+        <input type="number" name="cvc" placeholder='CVC' onClick={() => setValue({cardNumber, cvc})} value={cvc} onChange={(e) => cvcHandler(e.target.value)} required={value.cardNumber === cardNumber} />
       </div>
     </div>
   )

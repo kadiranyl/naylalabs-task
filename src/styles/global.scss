@@ -105,6 +105,67 @@ input{
 }
 
 
+.btn {
+  cursor: pointer;
+  z-index: 1;
+  position: relative;
+  padding: 16px 36px;
+  color: $primary;
+  font-weight: 600;
+  text-transform: capitalize;
+  overflow: hidden;
+  border: 2px solid $primary;
+  border-radius: 50px;
+  overflow: hidden;
+  -webkit-transition: .2s all linear;
+  transition: .2s all linear;
+  font-size: 14px;
+  -moz-outline-radius: 50px;
+  -webkit-border-radius: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.btn.active,
+.btn:hover,
+.btn:focus {
+  color: $primary;
+  text-decoration: none;
+}
+.btn:before {
+  content: " ";
+  position: absolute;
+  z-index: -1;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  width: 7px;
+  height: 4px;
+  -webkit-transition: .3s all linear;
+  transition: .3s all linear;
+  opacity: 0;
+  visibility: hidden;
+  background: #fff;
+  border-radius: 50px;
+
+}
+.btn:hover{
+  border-color: $primary-soft;
+}
+.btn:hover:before{
+  -webkit-transform: scale(100);
+          transform: scale(100);
+  opacity: 1;
+  visibility: visible;
+
+}
+
+.btn:focus,
+.form-control:focus {
+  box-shadow: none !important;
+}
+
 
 .text-btn {
   color: $primary;
@@ -133,6 +194,11 @@ input{
   border-radius: 24px;
   color: $page-bg;
   font-weight: 600;
+
+  &::before {
+    width: 2px;
+    height: 1px;
+  }
 }
 
 .two-left-one-right-schema {
@@ -224,6 +290,13 @@ main {
 
     .two-left-one-right-schema {
       position: relative;
+      transition: all $transition;
+      padding: 20px 12px;
+      border-radius: 6px;
+
+      &:hover {
+        background: $primary-soft;
+      }
 
       .hidden-input {
         position: absolute;
@@ -250,6 +323,10 @@ main {
           height: auto !important;
           position: inherit !important;
         }
+      }
+
+      span.name {
+      transition: all $transition;
       }
 
       .schema-right {
@@ -286,10 +363,13 @@ main {
 
     .two-left-one-right-schema.plan-schema {
       padding: 28px 32px;
-      border-radius: 6px;
       outline: 2px solid $page-bg;
       cursor: pointer;
       margin-top: 8px;
+
+      &:hover {
+        outline: 2px solid $primary !important;
+      }
 
       &:first-of-type {
         margin-top: 18px;
@@ -352,7 +432,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 64px;
-    width: 30%;
+    width: 35%;
 
     .box {
       min-width: 375px;

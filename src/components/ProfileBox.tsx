@@ -1,4 +1,6 @@
 import Image from "next/image";
+import CountUp from 'react-countup';
+import CountUpModule from "./CountUp";
 
 export default function ProfileBox() {
   return (
@@ -11,20 +13,20 @@ export default function ProfileBox() {
         <h2 className='profile-title'>Filip Martin Jose</h2>
         <p className='city'>Los Angeles</p>
 
-        <button type='button' className="small-btn">Pro Level</button>
+        <button type='button' className="btn small-btn">Pro Level</button>
 
         <div className="flex-row statics">
             <div className="flex-col">
             <p className='key'>Followers</p>
-            <span className='value'>980</span>
+            <CountUpModule number={980} className="value" />
             </div>
             <div className="flex-col">
             <p className='key'>Projects</p>
-            <span className='value'>142</span>
+            <CountUpModule number={142} className="value" />
             </div>
             <div className="flex-col">
             <p className='key'>Rank</p>
-            <span className='value'>129</span>
+            <CountUpModule number={129} className="value" />
             </div>
         </div>
     </div>

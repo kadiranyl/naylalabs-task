@@ -5,6 +5,7 @@ import PlanLeftOneRightSchema from 'components/PlanLeftOneRightSchema'
 import TwoLeftOneRightSchema from 'components/TwoLeftOneRightSchema'
 import { useState } from 'react'
 import TextBtn from './TextBtn'
+import { sendPayment } from 'services/PaymentService'
 
 export default function UpgradePlan() {
   
@@ -12,13 +13,13 @@ export default function UpgradePlan() {
     {
       planIcon: <GiPlanetConquest size={34} />,
       planName: "Small Business",
-      price: "8,350",
+      price: 8350,
       defaultChecked: true
     },
     {
       planIcon: <TbPlanet size={32} />,
       planName: "Big Business",
-      price: "12,650",
+      price: 12650,
     }
   ]
 
@@ -41,13 +42,15 @@ export default function UpgradePlan() {
     }
   ]
 
-  const [plan, setPlan] = useState<String>()
-  const [payment, setPayment] = useState<String>()
-  const [cvc, setCvc] = useState<Number>()
+  const [plan, setPlan] = useState<String>("")
+  const [payment, setPayment] = useState<any>({
+    cardNumber: String,
+    cvc: Number
+  })
   const [email, setEmail] = useState("")
 
   return (
-    <form className="box main-left">
+    <form className="box main-left" onSubmit={(e) => sendPayment(e, plan, payment, email)}>
         <h2>Upgrade your plan</h2>
         <p>Please make the payment to start enjoying all the features of our premium plan as soon as possible.</p>
 
@@ -57,13 +60,13 @@ export default function UpgradePlan() {
 
         <h3 className='box-mt-high'>Payment details</h3>
         {payments.map((item, index) => (
-          <TwoLeftOneRightSchema key={index} imageInfo={item.imageInfo} cardName={item.cardName} cardNumber={item.cardNumber} value={payment} setValue={setPayment} cvc={cvc} setCvc={setCvc} />
+          <TwoLeftOneRightSchema key={index} imageInfo={item.imageInfo} cardName={item.cardName} cardNumber={item.cardNumber} value={payment} setValue={setPayment} />
         ))}
         <TextBtn text="Add Payment Method" mt={true} />
 
         <input type="email" name="email" placeholder='Email address' className='email-input box-mt-high' value={email} onChange={(e) => setEmail(e.target.value)} required />
 
-        <button type='submit' className="big-btn box-mt">
+        <button type='submit' className="btn big-btn box-mt">
         Proceed to payment
         <BsArrowRight size={20} />
         </button>

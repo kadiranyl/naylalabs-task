@@ -23,7 +23,7 @@ export default function PriceModule({price, type, canEdit=false, setPrice}: any)
         {canEdit ? (
           <>
             <input type="number" value={price} onChange={(e: any) => setPriceHandler(e.target.value)} />
-            <CountUp start={animationStartPrice} end={price}>
+            <CountUp start={animationStartPrice} end={price} delay={0}>
               {({ countUpRef }) => (
                 <span ref={countUpRef} />
               )}

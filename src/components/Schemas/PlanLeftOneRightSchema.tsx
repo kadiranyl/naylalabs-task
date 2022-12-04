@@ -1,5 +1,5 @@
-import PriceModule from "./PriceModule";
-import TextBtn from "./TextBtn";
+import PriceModule from "../PriceModule";
+import TextBtn from "../TextBtn";
 
 export default function PlanLeftOneRightSchema({planIcon, planName, price, setValue, defaultChecked=false}: any) {
   return (

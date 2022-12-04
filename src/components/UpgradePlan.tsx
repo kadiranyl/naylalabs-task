@@ -1,8 +1,8 @@
 import { BsArrowRight } from 'react-icons/bs'
 import { TbPlanet } from 'react-icons/tb'
 import { GiPlanetConquest } from 'react-icons/gi'
-import PlanLeftOneRightSchema from 'components/PlanLeftOneRightSchema'
-import TwoLeftOneRightSchema from 'components/TwoLeftOneRightSchema'
+import PlanLeftOneRightSchema from 'components/Schemas/PlanLeftOneRightSchema'
+import TwoLeftOneRightSchema from 'components/Schemas/TwoLeftOneRightSchema'
 import { useState } from 'react'
 import TextBtn from './TextBtn'
 import { sendPayment } from 'services/PaymentService'
@@ -50,7 +50,7 @@ export default function UpgradePlan() {
   const [email, setEmail] = useState("")
 
   return (
-    <form className="box main-left" onSubmit={(e) => sendPayment(e, plan, payment, email)}>
+    <form className="box main-left" onSubmit={(e) => sendPayment(e, plan, payment, email, setPlan, setPayment, setEmail )}>
         <h2>Upgrade your plan</h2>
         <p>Please make the payment to start enjoying all the features of our premium plan as soon as possible.</p>
 

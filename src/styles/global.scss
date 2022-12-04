@@ -128,10 +128,8 @@ input{
 }
 
 
-.btn.active,
-.btn:hover,
-.btn:focus {
-  color: $primary;
+.btn:hover {
+  color: $primary !important;
   text-decoration: none;
 }
 .btn:before {
@@ -180,7 +178,7 @@ input{
   padding: 24px 18px;
   background: $primary;
   border-radius: 6px;
-  color: #fff;
+  color: #fff !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -256,6 +254,17 @@ input{
   }
 }
 
+.hidden-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  z-index: 10;
+  cursor: pointer;
+}
+
 
 
 main {
@@ -296,17 +305,6 @@ main {
 
       &:hover {
         background: $primary-soft;
-      }
-
-      .hidden-input {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        opacity: 0;
-        z-index: 10;
-        cursor: pointer;
       }
 
       .bank {
@@ -526,6 +524,8 @@ main {
           justify-content: center;
           gap: 10px;
           flex: 1;
+          position: relative;
+          transition: all $transition;
 
           span {
             font-weight: 600;
@@ -533,9 +533,10 @@ main {
 
           svg {
             color: rgba($color: $primary, $alpha: .3);
+            transition: all $transition;
           }
         }
-        .pickable.active {
+        .pickable:has(input:checked) {
           outline: 2px solid $primary;
           background: $primary-soft;
           

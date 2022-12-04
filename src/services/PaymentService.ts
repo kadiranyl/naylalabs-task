@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { toastError, toastSuccess } from 'lib/Toastify';
 
-export const sendPayment = async (e: any, plan: String, payment: Payment, email: String) => {
+export const sendPayment = async (e: any, plan: String, payment: Payment, email: String, setPlan: Function, setPayment: Function, setEmail: Function) => {
     e.preventDefault()
 
     try {
@@ -12,9 +12,14 @@ export const sendPayment = async (e: any, plan: String, payment: Payment, email:
             email
         })
 
-        toastSuccess("Payment is successfull!")
+        setPlan("")
+        setPayment({
+            cardNumber: String,
+            cvc: Number
+        })
+        setEmail("")
 
-        console.log(res);
+        toastSuccess("Payment is successfull!")
     } catch(e) {
         toastError("Something went wrong, please try again.")
         console.log(e);

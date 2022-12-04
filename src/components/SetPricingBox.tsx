@@ -15,13 +15,15 @@ export default function SetPricingBox() {
         <p>Please set up your hourly or fixed rate so that the client is aware of your pricing.</p>
 
         <div className="flex-row hourly-fixed">
-            <div className="pickable active">
-            <BiTime size={36} />
-            <span>Hourly</span>
+            <div className="pickable">
+              <input className="hidden-input" type="radio" name="pricing-type" />
+              <BiTime size={36} />
+              <span>Hourly</span>
             </div>
             <div className="pickable">
-            <BsReceipt size={36} />
-            <span>Fixed</span>
+              <input className="hidden-input" type="radio" name="pricing-type" />
+              <BsReceipt size={36} />
+              <span>Fixed</span>
             </div>
         </div>
 

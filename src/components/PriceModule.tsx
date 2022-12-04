@@ -30,7 +30,7 @@ export default function PriceModule({price, type, canEdit=false, setPrice}: any)
             </CountUp>
           </>
         ) : (
-        <CountUpModule number={price} />
+        <CountUpModule number={Number(price)} />
         )}
         <p>/ {type}</p>
     </div>

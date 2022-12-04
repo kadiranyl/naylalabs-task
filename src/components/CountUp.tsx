@@ -3,7 +3,7 @@ import CountUp from 'react-countup';
 
 export default function CountUpModule({number, className}: any) {
   return (
-    <CountUp start={0} end={number}>
+    <CountUp start={0} end={Number(number)}>
         {({ countUpRef }: any) => (
         <span className={className} ref={countUpRef} />
         )}

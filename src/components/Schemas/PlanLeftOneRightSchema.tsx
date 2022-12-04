@@ -4,7 +4,7 @@ import TextBtn from "../TextBtn";
 export default function PlanLeftOneRightSchema({planIcon, planName, price, setValue}: any) {
   return (
     <div className="two-left-one-right-schema plan-schema">
-      <input className="hidden-input" type="radio" name="plan-type" onChange={() => setValue(planName)} />
+      <input className="hidden-input" type="radio" name="plan-type" value={planName} onClick={(e) => setValue(planName)} />
       <div className="schema-left">
         <div className="plan-icon">
           {planIcon}

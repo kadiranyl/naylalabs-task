@@ -12,7 +12,7 @@ export default function OrderSuccessful({setShowPopup}: any) {
                 <p>We've received your order, thank you for choosing us.</p>
             </div>
 
-            <button type='button' className="btn small-btn">Explore new offers</button>
+            <button type='button' className="btn small-btn" onClick={() => setShowPopup(false)}>Explore new offers</button>
         </div>
     </div>
   )

@@ -1,14 +1,16 @@
 import axios from 'axios'
-import { toastError, toastSuccess } from 'lib/Toastify';
+import { toastError } from 'lib/Toastify';
 
-export const sendPayment = async (e: any, plan: String, payment: Payment, email: String, setPlan: Function, setPayment: Function, setEmail: Function, setShowPopup: Function, setResetCvc: Function) => {
-    e.preventDefault()   
-    
-    console.log(plan);
-    
+export const sendPayment = async (e: any, plan: String, payment: Payment, email: String, setPlan: Function, setPayment: Function, setEmail: Function, setShowSuccessfulPopup: Function, setShowUnsuccessfulPopup: Function, setResetCvc: Function) => {
+    e.preventDefault()    
 
     if (plan && payment.cardNumber && payment.cvc && email && payment.cvc >= 100) {
-        setShowPopup(true)
+        console.log("Plan: " + plan);
+        console.log("Card Number: " + payment.cardNumber);
+        console.log("CVC: " + payment.cvc);
+        console.log("E-mail: " + email);
+
+        setShowSuccessfulPopup(true)
         setPlan()
         setPayment({
             cardNumber: "",
@@ -20,6 +22,37 @@ export const sendPayment = async (e: any, plan: String, payment: Payment, email:
         const form: any = document.getElementById("send-payment-form")
 
         form?.reset()
+
+        
+
+         // The scenario that has to be
+        
+        // try {
+        //     const res = await axios.post(process.env.NEXT_PUBLIC_API_URL + 'payment', { 
+        //         plan,
+        //         cardNumber: payment.cardNumber,
+        //         cvc: payment.cvc,
+        //         email
+        //     })
+        
+        //     setShowSuccessfulPopup(true)
+        //     setPlan()
+        //     setPayment({
+        //         cardNumber: "",
+        //         cvc: NaN
+        //     })
+        //     setEmail()
+        //     setResetCvc(true)
+
+        //     const form: any = document.getElementById("send-payment-form")
+
+        //     form?.reset()
+
+        // } catch(e) {
+        //     setShowUnsuccessfulPopup(true)
+        //     console.log(e);
+        // }
+        
     } else if (!plan) {
         toastError("Please pick a plan!")
     } else if (!payment.cardNumber) {
@@ -29,30 +62,6 @@ export const sendPayment = async (e: any, plan: String, payment: Payment, email:
     } else if (!email) {
         toastError("Please enter your e-mail!")
     }
-
-    // The scenario that has to be
-    
-    // try {
-    //     const res = await axios.post(process.env.NEXT_PUBLIC_API_URL + 'payment', { 
-    //         plan,
-    //         cardNumber: payment.cardNumber,
-    //         cvc: payment.cvc,
-    //         email
-    //     })
-
-    //     setShowPopup(true)
-    //     setPlan("")
-    //     setPayment({
-    //         cardNumber: String,
-    //         cvc: Number
-    //     })
-    //     setEmail("")
-
-    //     toastSuccess("Payment is successfull!")
-    // } catch(e) {
-    //     toastError("Something went wrong, please try again.")
-    //     console.log(e);
-    // }
 }
 
 interface Payment {

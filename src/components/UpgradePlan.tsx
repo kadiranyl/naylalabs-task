@@ -7,6 +7,7 @@ import { useState } from 'react'
 import TextBtn from './TextBtn'
 import { sendPayment } from 'services/PaymentService'
 import OrderSuccessful from './Popups/OrderSuccessful'
+import OrderUnSuccessful from './Popups/OrderUnSuccessful'
 
 export default function UpgradePlan() {
   
@@ -42,7 +43,8 @@ export default function UpgradePlan() {
     }
   ]
 
-  const [showPopup, setShowPopup] = useState<Boolean>(false)
+  const [showSuccessfulPopup, setShowSuccessfulPopup] = useState<Boolean>(false)
+  const [showUnsuccessfulPopup, setShowUnsuccessfulPopup] = useState<Boolean>(false)
   const [plan, setPlan] = useState<String>("")
   const [payment, setPayment] = useState<any>({
     cardNumber: String,
@@ -50,11 +52,13 @@ export default function UpgradePlan() {
   })
   const [email, setEmail] = useState("")
   const [resetCvc, setResetCvc] = useState<Boolean>(false)
+
+  console.log(plan);
   
 
   return (
     <>
-    <form id="send-payment-form" className="box main-left" onSubmit={(e) => sendPayment(e, plan, payment, email, setPlan, setPayment, setEmail, setShowPopup, setResetCvc )}>
+    <form id="send-payment-form" className="box main-left" onSubmit={(e) => sendPayment(e, plan, payment, email, setPlan, setPayment, setEmail, setShowSuccessfulPopup, setShowUnsuccessfulPopup, setResetCvc )}>
         <h2>Upgrade your plan</h2>
         <p>Please make the payment to start enjoying all the features of our premium plan as soon as possible.</p>
 
@@ -76,8 +80,12 @@ export default function UpgradePlan() {
         </button>
     </form>
 
-    {showPopup && (
-      <OrderSuccessful setShowPopup={setShowPopup} />
+    {showSuccessfulPopup && (
+      <OrderSuccessful setShowPopup={setShowSuccessfulPopup} />
+    )}
+
+    {showUnsuccessfulPopup && (
+      <OrderUnSuccessful setShowPopup={setShowUnsuccessfulPopup} />
     )}
     </>
   )

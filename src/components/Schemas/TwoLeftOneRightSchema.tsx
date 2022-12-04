@@ -18,16 +18,10 @@ export default function TwoLeftOneRightSchema({imageInfo, cardName, cardNumber, 
     }
   }, [resetCvc])
 
-
   useEffect(() => {
     setCvc(NaN)
     setValue({cardNumber: value.cardNumber , cvc: NaN})
   }, [value.cardNumber])
-
-
-  console.log("cvc: " + cvc);
-  console.log("value.cvc: " + value.cvc);
-  
 
   return (
     <div className="two-left-one-right-schema">

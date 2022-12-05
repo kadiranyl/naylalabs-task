@@ -91,12 +91,19 @@
 }
 
 @media screen and (max-width: 479px) {
-    .main-right .set-pricing .hourly-fixed {
-        flex-direction: column !important;
-        gap: 16px !important;
+    .main-right .set-pricing {
 
-        .pickable {
-            width: 100%;
+        .hourly-fixed {
+            flex-direction: column !important;
+            gap: 16px !important;
+    
+            .pickable {
+                width: 100%;
+            }
+        }
+
+        .price-module {
+            justify-content: center !important;
         }
     }
 }
